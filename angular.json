@@ -35,9 +35,11 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -99,12 +101,20 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              {
+                "input": "node_modules/@fortawesome/fontawesome-free/css/all.css",
+                "bundleName": "fontawesome",
+                "inject": false
+              }
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2cd839a5-3295-4668-b401-0f2caa648869"
   }
 }
