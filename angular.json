@@ -106,9 +106,11 @@
                 "input": "node_modules/@fortawesome/fontawesome-free/css/all.css",
                 "bundleName": "fontawesome",
                 "inject": false
-              }
+              },
+              "node_modules/bootstrap/dist/css/bootstrap.min.css" 
             ],
-            "scripts": []
+            "scripts": [  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+          ]
           }
         }
       }

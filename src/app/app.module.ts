@@ -6,21 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from "../app/component/navbar/navbar.component";
 import { ProductListComponent } from "../app/component/product-list/product-list.component";
-import { BannerComponent } from './component/banner/banner.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
+import { CarouselComponent } from './component/carousel/carousel.component';
+import { MainComponent } from './component/main/main.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    MainComponent,
     ProductListComponent,
-    BannerComponent,
-    MainpageComponent
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarouselModule.forRoot()
   ],
   providers: [
     provideClientHydration()

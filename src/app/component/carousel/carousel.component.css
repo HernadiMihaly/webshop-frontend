@@ -1,0 +1,64 @@
+#carouselExampleControls {
+    max-height: 500px; /* Itt állítsd be a kívánt magasságot */
+    overflow: hidden;
+}
+
+.carousel-overlay::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 105%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    z-index: 1;
+    pointer-events: none;
+
+}
+
+.carousel-overlay a{
+    text-decoration: none;
+}
+
+.carousel-overlay{
+    position: relative;
+}
+
+.carousel-text {
+    position: absolute;
+    left: 40%;
+    top: 10%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    z-index: 2;
+    font-variant: small-caps;
+    font-size: 7.5vw; /* A méretarányos nagyítás itt van beállítva százalékos értékkel (5vw) */
+    text-shadow: 1.5px 1.5px 2px darkgray;
+    letter-spacing: -0.03em; /* Itt is lehet százalékos értéket beállítani, ha szükséges */
+    transition: 700ms ease;
+}
+
+.carousel-text:hover {
+    letter-spacing: 0.01em; 
+}
+
+.carousel-text:hover:before {
+    content: attr(data-hover);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: PaleGoldenRod;
+    z-index: -1;
+}
+
+.carousel-text:hover span {
+    display: none;
+}
+
+.carousel-text span {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
