@@ -1,6 +1,10 @@
 #carouselExampleControls {
-    max-height: 500px; /* Itt állítsd be a kívánt magasságot */
+    max-height: 500px;
     overflow: hidden;
+}
+
+.carousel-overlay{
+    position: relative;
 }
 
 .carousel-overlay::before{
@@ -20,10 +24,6 @@
     text-decoration: none;
 }
 
-.carousel-overlay{
-    position: relative;
-}
-
 .carousel-text {
     position: absolute;
     left: 40%;
@@ -33,10 +33,19 @@
     font-weight: bold;
     z-index: 2;
     font-variant: small-caps;
-    font-size: 7.5vw; /* A méretarányos nagyítás itt van beállítva százalékos értékkel (5vw) */
+    font-size: 7.5vw;
     text-shadow: 1.5px 1.5px 2px darkgray;
-    letter-spacing: -0.03em; /* Itt is lehet százalékos értéket beállítani, ha szükséges */
+    letter-spacing: -0.03em;
     transition: 700ms ease;
+}
+
+.carousel-text span {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+.carousel-text:hover span {
+    display: none;
 }
 
 .carousel-text:hover {
@@ -52,13 +61,4 @@
     height: 100%;
     color: PaleGoldenRod;
     z-index: -1;
-}
-
-.carousel-text:hover span {
-    display: none;
-}
-
-.carousel-text span {
-    display: inline-block;
-    margin-bottom: 0.8rem;
 }
