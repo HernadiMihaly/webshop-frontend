@@ -7,6 +7,10 @@ const routes: Routes = [
   { path: '', component: MainComponent 
   },
   { path: 'products/men', component: ProductListComponent 
+  },
+  { path: 'products/women', component: ProductListComponent 
+  },
+  { path: 'products/children', component: ProductListComponent 
   }
 ];
 
