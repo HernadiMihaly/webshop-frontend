@@ -29,4 +29,8 @@
  button {
     color: white;
  }
+
+ .btn:active{
+    color: whitesmoke;
+ }
  
