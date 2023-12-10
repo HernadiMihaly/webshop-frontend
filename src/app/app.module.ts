@@ -9,6 +9,7 @@ import { ProductListComponent } from "../app/component/product-list/product-list
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { MainComponent } from './component/main/main.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { SubscribePanelComponent } from './component/subscribe-panel/subscribe-panel.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     NavbarComponent,
     MainComponent,
     ProductListComponent,
-    CarouselComponent
+    CarouselComponent,
+    SubscribePanelComponent
   ],
   imports: [
     BrowserModule,
