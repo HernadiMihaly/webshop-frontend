@@ -4,14 +4,14 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from "../app/component/navbar/navbar.component";
-import { ProductListComponent } from "../app/component/product-list/product-list.component";
-import { CarouselComponent } from './component/carousel/carousel.component';
-import { MainComponent } from './component/main/main.component';
+import { NavbarComponent } from "./component/main_component/navbar/navbar.component";
+import { ProductListComponent } from "./component/product_component/product-list/product-list.component";
+import { CarouselComponent } from './component/main_component/carousel/carousel.component';
+import { MainComponent } from './component/main_component/main/main.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { SubscribePanelComponent } from './component/subscribe-panel/subscribe-panel.component';
-import { PopularItemsListComponent } from './component/popular-items-list/popular-items-list.component';
-import { FooterComponent } from './component/footer/footer.component';
+import { SubscribePanelComponent } from './component/main_component/subscribe-panel/subscribe-panel.component';
+import { PopularItemsListComponent } from './component/main_component/popular-items-list/popular-items-list.component';
+import { FooterComponent } from './component/main_component/footer/footer.component';
 
 
 @NgModule({
