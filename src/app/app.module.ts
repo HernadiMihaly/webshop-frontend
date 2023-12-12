@@ -10,6 +10,8 @@ import { CarouselComponent } from './component/carousel/carousel.component';
 import { MainComponent } from './component/main/main.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { SubscribePanelComponent } from './component/subscribe-panel/subscribe-panel.component';
+import { PopularItemsListComponent } from './component/popular-items-list/popular-items-list.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { SubscribePanelComponent } from './component/subscribe-panel/subscribe-p
     MainComponent,
     ProductListComponent,
     CarouselComponent,
-    SubscribePanelComponent
+    SubscribePanelComponent,
+    PopularItemsListComponent
   ],
   imports: [
     BrowserModule,
