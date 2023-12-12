@@ -1,0 +1,12 @@
+#logo{
+    width: 100pt;
+}
+
+#motto{
+    font-style: italic;
+}
+
+#footer{
+    border-top: 1px solid #dddddd;
+    padding-top: 30pt;
+}
