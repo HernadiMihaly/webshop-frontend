@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.empty-placeholder{
+    margin-bottom: 50px;
+}
+
+.custom-dark-bg{
+    background-color: #181616;
+    opacity: 0.95;
+}
+
+.custom-dark-text{
+    text-decoration : none;
+    color: #181616;
+    opacity: 0.95;
+}
+

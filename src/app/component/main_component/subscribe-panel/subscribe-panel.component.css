@@ -17,11 +17,6 @@
     align-items: center;
 }
 
-.app-base-color{
-    background-color: #181616;
-    opacity: 0.95;
-}
-
 .btn-background-grey{
     background-color: grey;
 }
