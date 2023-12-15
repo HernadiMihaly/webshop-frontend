@@ -12,6 +12,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { SubscribePanelComponent } from './component/main_component/subscribe-panel/subscribe-panel.component';
 import { PopularItemsListComponent } from './component/main_component/popular-items-list/popular-items-list.component';
 import { FooterComponent } from './component/main_component/footer/footer.component';
+import { ProductPageComponent } from './component/product_component/product-page/product-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FooterComponent } from './component/main_component/footer/footer.compon
     CarouselComponent,
     SubscribePanelComponent,
     PopularItemsListComponent,
-    FooterComponent
+    FooterComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
