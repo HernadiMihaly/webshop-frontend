@@ -1,4 +1,5 @@
 # App
+**This project is currently under development. The code is not stable yet!**
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
