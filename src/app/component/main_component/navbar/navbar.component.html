@@ -30,8 +30,8 @@
             <div *ngIf="rootCategory.subCategories" class="dropdown-container">
               <div class="dropdown-columns">
               <div *ngFor="let subCategory of rootCategory.subCategories">
-                <a class="dropdown-item dropdown-root-item" href="#">{{titleCaseWord(subCategory.name)}}</a>
-                <a *ngFor="let subSubCategory of subCategory.subCategories" class="dropdown-item" href="#">{{titleCaseWord(subSubCategory.name)}} </a>
+                <a class="dropdown-item dropdown-root-item" [routerLink]="['/products/', subCategory.id]" >{{titleCaseWord(subCategory.name)}}</a>
+                <a *ngFor="let subSubCategory of subCategory.subCategories" class="dropdown-item" [routerLink]="['/products/', subSubCategory.id]" >{{titleCaseWord(subSubCategory.name)}} </a>
               </div>
             </div>
             </div>
