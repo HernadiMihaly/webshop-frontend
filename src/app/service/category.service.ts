@@ -11,12 +11,13 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories(): Observable<Category[]>{
+  getAllCategories(): Observable<Category[]>{
     return this.http.get<Category[]>(`${this.baseUrl}`);
   }
 
-  getSubCategories(category: Category): Observable<Category[]>{
-    return this.http.get<Category[]>(`${this.baseUrl}/subcategories/${category.id}`);
+  getSubCategories(categoryId: Number): Observable<Category[]>{
+    return this.http.get<Category[]>(`${this.baseUrl}/subcategories/${categoryId}`);
+    
   }
 
 }

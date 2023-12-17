@@ -23,38 +23,16 @@
           <a href="/"><img class="logo-img" src="../../../assets/images/logo1.png" alt="" height="80"></a>
         </div>
       </div>
-      <div class="col-lg-5 col-md-5 d-none d-lg-block d-md-block d-xs-none ms-auto">
+      <div *ngIf="rootCategories" class="col-lg-5 col-md-5 d-none d-lg-block d-md-block d-xs-none ms-auto">
         <div class="d-flex justify-content-around">
-          <div class="customLink">
-            <a class="d-inline-block p-3" href="/products/men">Férfi</a>
-            <div class="dropdown-container">
+          <div *ngFor="let rootCategory of rootCategories" class="customLink">
+            <a class="d-inline-block p-3" [routerLink]="['/products/', rootCategory.id]">{{ rootCategory.name }}</a>
+            <div *ngIf="rootCategory.subCategories" class="dropdown-container">
               <div class="dropdown-columns">
-              <a class="dropdown-item dropdown-root-item" href="#">Új termékek</a>
-              <a class="dropdown-item" href="#">Férfi alkategória 2</a>
-              <a class="dropdown-item dropdown-root-item" href="#">Használt termékek</a>
-              <a class="dropdown-item" href="#">Férfi alkategória 4</a>
-            </div>
-            </div>
-          </div>
-          <div class="customLink">
-            <a class="d-inline-block p-3" href="/products/women">Női</a>
-            <div class="dropdown-container">
-              <div class="dropdown-columns">
-              <a class="dropdown-item dropdown-root-item" href="#">Új termékek</a>
-              <a class="dropdown-item" href="#">Női alkategória 2</a>
-              <a class="dropdown-item dropdown-root-item" href="#">Használt termékek</a>
-              <a class="dropdown-item" href="#">Női alkategória 4</a>
-            </div>
-            </div>
-          </div>
-          <div class="customLink">
-            <a class="d-inline-block p-3" href="/products/children">Gyerek</a>
-            <div class="dropdown-container">
-              <div class="dropdown-columns">
-              <a class="dropdown-item dropdown-root-item" href="#">Új termékek</a>
-              <a class="dropdown-item" href="#">Gyerek alkategória 2</a>
-              <a class="dropdown-item dropdown-root-item" href="#">Használt termékek</a>
-              <a class="dropdown-item" href="#">Gyerek alkategória 4</a>
+              <div *ngFor="let subCategory of rootCategory.subCategories">
+                <a class="dropdown-item dropdown-root-item" href="#">{{titleCaseWord(subCategory.name)}}</a>
+                <a *ngFor="let subSubCategory of subCategory.subCategories" class="dropdown-item" href="#">{{titleCaseWord(subSubCategory.name)}} </a>
+              </div>
             </div>
             </div>
           </div>

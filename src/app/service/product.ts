@@ -14,7 +14,7 @@ export interface  Product {
 
     materials: String;
 
-    category: Category;
+    categoryId: number;
 
     imageUrl: String;
 

@@ -4,4 +4,6 @@ export interface Category {
     name: String;
 
     parentCategory: Category;
+
+    subCategories: Category[];
 }

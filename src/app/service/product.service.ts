@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  baseUrl = "https://localhost:8080/products"
+  baseUrl = `http://localhost:8080/products`
 
   constructor(private http: HttpClient) { }
 
@@ -16,10 +16,10 @@ export class ProductService {
   }
 
   public getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(this.baseUrl+ "/${id}`");
+    return this.http.get<Product>(`${this.baseUrl}/${id}`);
   }
 
   public getProductsByCategory(categoryId: number): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl+ "/category/${categoryId}`");
+    return this.http.get<Product[]>(`${this.baseUrl}/category/${categoryId}`);
   }
 }

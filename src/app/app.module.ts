@@ -13,6 +13,8 @@ import { SubscribePanelComponent } from './component/main_component/subscribe-pa
 import { PopularItemsListComponent } from './component/main_component/popular-items-list/popular-items-list.component';
 import { FooterComponent } from './component/main_component/footer/footer.component';
 import { ProductPageComponent } from './component/product_component/product-page/product-page.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -31,9 +33,11 @@ import { ProductPageComponent } from './component/product_component/product-page
     BrowserModule,
     NgbModule,
     AppRoutingModule,
+    HttpClientModule,
     CarouselModule.forRoot()
   ],
   providers: [
+    provideHttpClient(withFetch()),
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

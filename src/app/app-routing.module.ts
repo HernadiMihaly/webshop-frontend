@@ -7,13 +7,11 @@ import { ProductPageComponent } from './component/product_component/product-page
 const routes: Routes = [
   { path: '', component: MainComponent 
   },
-  { path: 'products/men', component: ProductListComponent 
-  },
-  { path: 'products/women', component: ProductListComponent 
-  },
-  { path: 'products/children', component: ProductListComponent 
+  { path: 'products/:categoryId', component:ProductListComponent
   },
   { path: 'product/:id', component: ProductPageComponent 
+  },
+  { path: 'products/all', component: ProductListComponent 
   }
 ];
 
