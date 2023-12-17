@@ -3,7 +3,7 @@ export interface Category {
 
     name: String;
 
-    parentCategory: Category;
+    parentId: number;
 
     subCategories: Category[];
 }

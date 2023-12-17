@@ -19,7 +19,7 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe((categories) => {
       this.categories = categories;
-
+      
       this.getRootCategories(categories);
     });
   }
@@ -31,7 +31,7 @@ export class NavbarComponent {
 
   getRootCategories(categories: Category[] | undefined) {
     if (categories) {
-      this.rootCategories = categories.filter(category => !category.parentCategory);
+      this.rootCategories = categories.filter(category => !category.parentId);
     }
   }  
   
