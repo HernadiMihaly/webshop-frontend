@@ -52,8 +52,8 @@
             <div *ngFor="let product of products" class="col-md-4">
                 <section class="panel">
                     <div class="pro-img-box">
-                        <a href="#" class="pro-title">
-                           <img [src]="product.imageUrl" alt="" />
+                        <a [routerLink]="['/product/', product.id]" class="pro-title">
+                           <img [src]="product.productPhotos.at(0)?.imageUrl" alt="" />
                         </a>    
                         <a href="#" class="adtocart">
                             <i class="fa fa-shopping-cart"></i>
@@ -62,7 +62,7 @@
 
                     <div class="panel-body text-center">
                         <h4>
-                            <a href="#" class="pro-title">{{product.name}}</a>
+                            <a [routerLink]="['/product/', product.id]" class="pro-title">{{product.name}}</a>
                         </h4>
                         <div class="price">{{ product.price }} Ft</div>
                     </div>

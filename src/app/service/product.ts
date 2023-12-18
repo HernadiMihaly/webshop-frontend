@@ -1,4 +1,5 @@
-import { Category } from "./category";
+import { ProductPhoto } from "./productphoto";
+import { ProductStock } from "./productstock";
 
 export interface  Product {
 
@@ -14,8 +15,10 @@ export interface  Product {
 
     materials: String;
 
-    categoryId: number;
+    category: number;
 
-    imageUrl: String;
+    productPhotos: ProductPhoto[]; 
+
+    productStock: ProductStock[];
 
 }

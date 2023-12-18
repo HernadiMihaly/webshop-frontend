@@ -97,11 +97,6 @@
   font-weight: bold;
 }
 
-.dropdown-root-item:hover{
-  background-color: #f9f9f9;
-  color: #181616;
-}
-
 .custom-search {
   padding-top: 10px;
   width: 250px;

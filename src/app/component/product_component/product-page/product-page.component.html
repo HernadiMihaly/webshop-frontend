@@ -1,10 +1,10 @@
-<div class="container px-4 px-lg-5 my-5">
+<div *ngIf="product" class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div id="carouselExampleControls" class="col-md-6 carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div *ngFor="let slide of slides; let i = index" class="carousel-item" [class.active]="i === 0">
+                    <div *ngFor="let productPhoto of product.productPhotos; let i = index" class="carousel-item" [class.active]="i === 0">
                         <div class="carousel-overlay">
-                            <img [src]="slide.image"> 
+                            <img [src]="productPhoto.imageUrl"> 
                         </div>
                     </div>
                 </div>
@@ -18,17 +18,13 @@
                 </button>
             </div>
             <div class="item-description col-md-6">
-                <h1 class="display-5 fw-bolder">Kerek nyakú póló</h1>
-                <div class="small mb-1">Szín: Fehér</div>
+                <h1 class="display-5 fw-bolder">{{product.name}}</h1>
+                <div class="small mb-1">Szín: {{product.color}}</div>
                 <div class="fs-5 mb-5">
-                    <span>Ár: 2990 Ft</span>
+                    <span>Ár: {{product.price}}</span>
                 </div>
-                <div class="container-item-sizes">
-                    <span class="item-size"><button class="btn btn-outline-dark flex-shrink-0" type="button">XS</button></span>
-                    <span class="item-size"><button class="btn btn-outline-dark flex-shrink-0" type="button">S</button></span>
-                    <span class="item-size"><button class="btn btn-outline-dark flex-shrink-0" type="button">M</button></span>
-                    <span class="item-size"><button class="btn btn-outline-dark flex-shrink-0" type="button">L</button></span>
-                    <span class="item-size"><button class="btn btn-outline-dark flex-shrink-0" type="button">XL</button></span>
+                <div *ngIf="product.productStock" class="container-item-sizes">
+                    <span *ngFor="let productStockElement of product.productStock" class="item-size"><button class="btn btn-outline-dark flex-shrink-0" type="button">{{productStockElement.size}}</button></span>
                  </div>
                  <div class="d-flex to-cart">
                     <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
@@ -39,11 +35,11 @@
                 </div>
                 <div>
                     <span>Leírás: </span>
-                    <p class="lead" style="font-size: 1em;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                    <p class="lead" style="font-size: 1em;">{{product.description}}</p>
                 </div>
                 <div>
                     <span>Anyag/Összetétel: </span>
-                    <p class="lead" style="font-size: 1em;">96% pamut, 4% elasztán</p>
+                    <p class="lead" style="font-size: 1em;">{{product.materials}}</p>
                 </div>
             </div>
         </div>
