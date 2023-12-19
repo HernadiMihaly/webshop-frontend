@@ -23,8 +23,20 @@
                 <div class="fs-5 mb-5">
                     <span>Ár: {{product.price}}</span>
                 </div>
-                <div *ngIf="product.productStock" class="container-item-sizes">
-                    <span *ngFor="let productStockElement of product.productStock" class="item-size"><button class="btn btn-outline-dark flex-shrink-0" type="button">{{productStockElement.size}}</button></span>
+                <div class="container-item-sizes">
+                    <span *ngFor="let productStockElement of product.productStock">
+                    <span *ngIf="productStockElement.quantity>0" class="item-size">
+                            <button (click)="displayQuantity(productStockElement.quantity)" class="btn btn-outline-dark flex-shrink-0" type="button">
+                                {{productStockElement.size}}
+                            </button>
+                    </span>
+                    </span>
+                    <div *ngIf="selectedQuantity"> Raktáron: 
+                        <span [ngStyle]="{'color': (selectedQuantity < 4) ? 'red' : 'black'}">
+                            {{selectedQuantity}} db 
+                            <span *ngIf="selectedQuantity<4"> maradt!</span>
+                        </span>
+                    </div>
                  </div>
                  <div class="d-flex to-cart">
                     <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />

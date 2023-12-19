@@ -9,13 +9,9 @@ import { ProductService } from '../../../service/product.service';
   styleUrl: './product-page.component.css'
 })
 export class ProductPageComponent {
+
   product: Product | undefined;
-  
-  slides = [
-    {image:"https://dummyimage.com/600x700/dee2e6/6c757d.jpg"},
-    {image:"https://www.ikea.com/hu/hu/images/products/bjoerksta-kep-mona-lisa__0809958_pe771199_s5.jpg?f=s"},
-    {image:"https://wallpapercave.com/wp/wp4471355.jpg"}
-  ];
+  selectedQuantity: number | undefined;
 
   constructor(private router: Router, private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
@@ -33,6 +29,10 @@ export class ProductPageComponent {
     });
     
   }
+
+  displayQuantity(quantity: number) {
+      this.selectedQuantity = quantity;
+    }
 
 
 }
