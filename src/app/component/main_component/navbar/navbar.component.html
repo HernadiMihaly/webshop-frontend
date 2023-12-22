@@ -27,7 +27,6 @@
         <div class="d-flex justify-content-around">
           <div *ngFor="let rootCategory of rootCategories" class="customLink">
             <a class="d-inline-block p-3" [routerLink]="['/products/', rootCategory.id]">{{ rootCategory.name }}</a>
-          
             <div *ngIf="rootCategory.subCategories" class="shadow container dropdown-menu">
               <div class="row bg-white rounded-0 m-0 p-3">
                 <div class="col-lg-7 col-xl-8">
@@ -55,9 +54,6 @@
                 </div>
               </div>
             </div>
-    
-          
-          <!-- Vége -->
           </div>
         </div>
       </div>
