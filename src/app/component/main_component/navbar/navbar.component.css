@@ -63,40 +63,6 @@
   font-variant-caps: all-small-caps;
 }
 
-/* Új CSS a dropdown-hoz */
-.dropdown-container {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.customLink:hover .dropdown-container {
-  display: block;
-}
-
-.dropdown-columns {
-    column-count: 2; /* Két oszlop */
-    column-gap: 20px; /* Oszlopok közötti rés */
-    padding: 10px;
-  }
-
-.dropdown-item {
-  text-align: left;
-  font-size: 10pt;
-  display: block;
-  padding: 2px;
-  text-decoration: none;
-  color: #181616;
-  font-variant-caps: normal;
-}
-
-.dropdown-root-item {
-  font-weight: bold;
-}
-
 .custom-search {
   padding-top: 10px;
   width: 250px;
@@ -116,4 +82,30 @@
 
 .custom-search i {
   color: white;
+}
+
+/**/
+
+.text-uppercase {
+  letter-spacing: 0.08em;
+}
+
+.customLink:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  width: 50%;
+}
+
+.dropdown-list-element {
+  font-weight: normal !important;
+  font-variant-caps: normal !important;
+  font-size: smaller;
+  padding-top: 5pt;
+  cursor: pointer;
+}
+
+.dropdown-list-element:hover {
+  color: rgb(90, 90, 90);
 }

@@ -27,14 +27,37 @@
         <div class="d-flex justify-content-around">
           <div *ngFor="let rootCategory of rootCategories" class="customLink">
             <a class="d-inline-block p-3" [routerLink]="['/products/', rootCategory.id]">{{ rootCategory.name }}</a>
-            <div *ngIf="rootCategory.subCategories" class="dropdown-container">
-              <div class="dropdown-columns">
-              <div *ngFor="let subCategory of rootCategory.subCategories">
-                <a class="dropdown-item dropdown-root-item" [routerLink]="['/products/', subCategory.id]" >{{titleCaseWord(subCategory.name)}}</a>
-                <a *ngFor="let subSubCategory of subCategory.subCategories" class="dropdown-item" [routerLink]="['/products/', subSubCategory.id]" >{{titleCaseWord(subSubCategory.name)}} </a>
+          
+            <div *ngIf="rootCategory.subCategories" class="shadow container dropdown-menu">
+              <div class="row bg-white rounded-0 m-0 p-3">
+                <div class="col-lg-7 col-xl-8">
+                    <div class="row">
+                      <div *ngFor="let subCategory of rootCategory.subCategories" class="col-lg-6 mb-4">
+                          <a class="text-dark text-uppercase text-decoration-none" [routerLink]="['/products/', subCategory.id]">
+                          {{subCategory.name}}
+                          </a>
+                        <ul class="list-unstyled" >
+                          <li *ngFor="let subSubCategory of subCategory.subCategories" class="dropdown-list-element" [routerLink]="['/products/', subSubCategory.id]">
+                            {{titleCaseWord(subSubCategory.name)}}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+                <div *ngIf="rootCategory?.name?.toLowerCase()?.includes('férfi')" class="col-lg-5 col-xl-4 px-0 d-none d-lg-block"
+                  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), center center url(' + dropdownImages.men + ') no-repeat', 'background-size': 'cover'}">                
+                </div>
+                <div *ngIf="rootCategory?.name?.toLowerCase()?.includes('női')" class="col-lg-5 col-xl-4 px-0 d-none d-lg-block"
+                  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), center center url(' + dropdownImages.women + ') no-repeat', 'background-size': 'cover'}">
+                </div>
+                <div *ngIf="rootCategory?.name?.toLowerCase()?.includes('gyerek')" class="col-lg-5 col-xl-4 px-0 d-none d-lg-block"
+                  [ngStyle]="{'background': 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), center center url(' + dropdownImages.children + ') no-repeat', 'background-size': 'cover'}">
+                </div>
               </div>
             </div>
-            </div>
+    
+          
+          <!-- Vége -->
           </div>
         </div>
       </div>
