@@ -23,20 +23,20 @@
           <a href="/"><img class="logo-img" src="../../../assets/images/logo1.png" alt="" height="80"></a>
         </div>
       </div>
-      <div *ngIf="rootCategories" class="col-lg-5 col-md-5 d-none d-lg-block d-md-block d-xs-none ms-auto">
+      <div class="col-lg-5 col-md-5 d-none d-lg-block d-md-block d-xs-none ms-auto">
         <div class="d-flex justify-content-around">
           <div *ngFor="let rootCategory of rootCategories" class="customLink">
-            <a class="d-inline-block p-3" [routerLink]="['/products/', rootCategory.id]">{{ rootCategory.name }}</a>
-            <div *ngIf="rootCategory.subCategories" class="shadow container dropdown-menu">
+            <a class="d-inline-block p-3 clickable">{{ rootCategory.name }}</a>
+            <div class="shadow container dropdown-menu">
               <div class="row bg-white rounded-0 m-0 p-3">
                 <div class="col-lg-7 col-xl-8">
                     <div class="row">
-                      <div *ngFor="let subCategory of rootCategory.subCategories" class="col-lg-6 mb-4">
-                          <a class="text-dark text-uppercase text-decoration-none" [routerLink]="['/products/', subCategory.id]">
+                      <div *ngFor="let subCategory of getSubcategoriesForCategory(rootCategory)" class="col-lg-6 mb-4">
+                          <div class="text-dark text-uppercase text-decoration-none">
                           {{subCategory.name}}
-                          </a>
+                          </div>
                         <ul class="list-unstyled" >
-                          <li *ngFor="let subSubCategory of subCategory.subCategories" class="dropdown-list-element" [routerLink]="['/products/', subSubCategory.id]">
+                          <li *ngFor="let subSubCategory of getSubcategoriesForCategory(subCategory)" class="dropdown-list-element" [routerLink]="['/products/', subSubCategory.id]">
                             {{titleCaseWord(subSubCategory.name)}}
                           </li>
                         </ul>

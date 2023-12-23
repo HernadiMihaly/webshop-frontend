@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CategoryService } from '../../../service/category.service';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '../../../service/category';
@@ -11,15 +11,15 @@ import { __values } from 'tslib';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  categories: Category[] | undefined;
+  rootCategories: Category[] | undefined;
   dropdownImages = {
     'men' : "https://images.pexels.com/photos/6227715/pexels-photo-6227715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     'women' : "https://images.pexels.com/photos/6014873/pexels-photo-6014873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     'children' : "https://images.pexels.com/photos/6266237/pexels-photo-6266237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   };
-  categories: Category[] | undefined;
-  rootCategories: Category[] | undefined;
 
-  constructor(private categoryService: CategoryService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe((categories) => {
@@ -39,5 +39,12 @@ export class NavbarComponent {
       this.rootCategories = categories.filter(category => !category.parentId);
     }
   }  
+
+  getSubcategoriesForCategory(category: Category): Category[] {
+    if (this.categories) {
+      return this.categories.filter(subcategory => subcategory.parentId === category.id);
+    }
+    return [];
+  }
   
 }

@@ -15,9 +15,8 @@ export class CategoryService {
     return this.http.get<Category[]>(`${this.baseUrl}`);
   }
 
-  getSubCategories(categoryId: Number): Observable<Category[]>{
-    return this.http.get<Category[]>(`${this.baseUrl}/subcategories/${categoryId}`);
-    
+  getParentCategory(categoryId: Number): Observable<Category>{
+    return this.http.get<Category>(`${this.baseUrl}/${categoryId}/parent`);
   }
 
 }

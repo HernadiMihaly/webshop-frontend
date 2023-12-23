@@ -7,7 +7,7 @@
             </header>
             <div class="panel-body">
                 <form role="form product-form">
-                    <div class="form-group">
+                    <div *ngIf="parentCategory?.name?.toLowerCase()?.includes('használt')" class="form-group">
                         <label>Márka</label>
                         <select class="form-control hasCustomSelect" style="-webkit-appearance: menulist-button; width: 231px; position: absolute; opacity: 0; height: 34px; font-size: 12px;">
                             <option>Wallmart</option>
@@ -17,17 +17,26 @@
                         </select>
                         <span class="customSelect form-control" style="display: inline-block;"><span class="customSelectInner" style="width: 209px; display: inline-block;">Wallmart</span></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group filter-element">
                         <label>Szín</label>
-                        <select class="form-control hasCustomSelect" style="width: 231px; position: absolute; opacity: 0; height: 34px; font-size: 12px;">
-                            <option>Fehér</option>
-                            <option>Fekete</option>
-                            <option>Piros</option>
-                            <option>Zöld</option>
-                        </select>
-                        <span class="customSelect form-control" style="display: inline-block;"><span class="customSelectInner" style="width: 209px; display: inline-block;">Fehér</span></span>
-                    </div>
-                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="feherCheckbox">
+                            <label class="form-check-label" for="feherCheckbox">Fehér</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="feketeCheckbox">
+                            <label class="form-check-label" for="feketeCheckbox">Fekete</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="pirosCheckbox">
+                            <label class="form-check-label" for="pirosCheckbox">Piros</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="zoldCheckbox">
+                            <label class="form-check-label" for="zoldCheckbox">Zöld</label>
+                        </div>
+                    </div>                    
+                    <div class="form-group filter-element">
                         <label>Méret</label>
                         <select class="form-control hasCustomSelect" style="width: 231px; position: absolute; opacity: 0; height: 34px; font-size: 12px;">
                             <option>XS</option>
@@ -38,7 +47,7 @@
                         </select>
                         <span class="customSelect form-control" style="display: inline-block;"><span class="customSelectInner" style="width: 209px; display: inline-block;">S</span></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group filter-element">
                         <label for="customRange3" class="form-label">Ár</label>
                         <input type="range" class="form-range" min="0" max="100000" step="1" id="customRange3">
                     </div>
@@ -55,7 +64,7 @@
                         <a [routerLink]="['/product/', product.id]" class="pro-title">
                            <img [src]="product.productPhotos.at(0)?.imageUrl" alt="" />
                         </a>    
-                        <a href="#" class="adtocart">
+                        <a class="adtocart">
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                     </div>
