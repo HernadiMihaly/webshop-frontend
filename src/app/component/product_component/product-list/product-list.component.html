@@ -5,7 +5,7 @@
             <header class="panel-heading" style="font-weight: bold; padding-bottom: 8pt; padding-top: 8pt;">
                 Szűrés
             </header>
-            <div class="panel-body">
+            <div class="panel-body pb-5">
                 <form role="form product-form">
                     <div *ngIf="parentCategory?.name?.toLowerCase()?.includes('használt')" class="form-group filter-element">
                         <label>Márka</label>
@@ -60,26 +60,26 @@
     </div>
     <div class="col-md-9">
         <div class="row product-list">
-            <div *ngFor="let product of products" class="col-md-4">
-                <section class="panel">
+            <div *ngFor="let product of products" class="col-md-4 pb-4">
+                <section class="panel border-bottom">
                     <div class="pro-img-box">
                         <a [routerLink]="['/product/', product.id]" class="pro-title">
                            <img [src]="product.productPhotos.at(0)?.imageUrl" alt="" />
                         </a>    
-                        <a class="adtocart">
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
                     </div>
-
                     <div class="panel-body text-center">
                         <h4>
-                            <a [routerLink]="['/product/', product.id]" class="pro-title">{{product.name}}</a>
+                            <a [routerLink]="['/product/', product.id]" class="pro-title text-decoration-none">{{product.name}}</a>
                         </h4>
                         <div class="price">{{ product.price }} Ft</div>
                     </div>
+                    <div class="text-center pt-3 pb-3">
+                        <a class="btn btn-outline-dark" href="#">
+                            Kosárba <i class="fa fa-shopping-cart"></i>
+                        </a>
+                    </div>
                 </section>
             </div>
-
         </div>
     </div>
     </div>
