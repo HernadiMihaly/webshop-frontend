@@ -15,6 +15,8 @@ export interface  Product {
 
     materials: String;
 
+    brand: String;
+
     category: number;
 
     productPhotos: ProductPhoto[]; 

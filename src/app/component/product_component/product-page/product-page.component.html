@@ -49,6 +49,11 @@
                     <span>Leírás: </span>
                     <p class="lead" style="font-size: 1em;">{{product.description}}</p>
                 </div>
+                <div *ngIf="!product.brand.toLowerCase().includes('stylet')">
+                    <span>Márka: 
+                        <p class="lead" style="font-size: 1em;">{{product.brand}}</p> 
+                    </span>
+                </div>
                 <div>
                     <span>Anyag/Összetétel: </span>
                     <p class="lead" style="font-size: 1em;">{{product.materials}}</p>
