@@ -1,37 +1,13 @@
-#carouselExampleControls {
-    height: 500pt;
-    width: 400pt;
-    padding-bottom: 0;
-  }
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  .carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.item-size-space{
+  padding-right: 10pt;
+}
   
-  .carousel-control-prev, .carousel-control-next {
-    position:absolute;
-    margin-top: -100pt;
-  }
-
-  .item-description{
-    height: 500pt;
-    overflow: hidden;
-  }
-
-  .item-size{
-    padding-right: 10pt;
-  }
-  
-  .container-item-sizes, .to-cart{
-    margin-bottom: 30pt;
-  }
-  
-  .product-footer{
-    background-color: #181616;
-  }
-
-.empty-placeholder {
-  margin-bottom: 0;
+.container-item-sizes, .to-cart{
+  margin-bottom: 30pt;
 }
