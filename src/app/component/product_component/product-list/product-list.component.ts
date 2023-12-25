@@ -16,8 +16,42 @@ export class ProductListComponent {
   constructor(private router: Router, private productService: ProductService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const searchParam = params['search'];
 
+      if(searchParam){
+        this.loadProductsBySearchParams(searchParam);
+      } else {
+        this.loadProductsBySelectedPage();
+      }
+    });
+    
+  }
+
+  private loadProductsBySearchParams(searchParam: string) {
+    this.productService.getAllProducts().subscribe((products) => {
+      if (searchParam) {
+        const searchTerms = searchParam.toLowerCase().split(' ');
+  
+        this.products = products.filter(product => {
+          // Ellenőrizzük, hogy minden keresési szó szerepel-e valamelyik mezőben
+          return searchTerms.every(term =>
+            product.name.toLowerCase().includes(term) ||
+            product.description.toLowerCase().includes(term) ||
+            product.color.toLowerCase().includes(term) ||
+            product.materials.toLowerCase().includes(term)
+          );
+        });
+      } else {
+        this.products = products;
+      }
+    });
+  }
+  
+
+  private loadProductsBySelectedPage(){
+    this.activatedRoute.paramMap.subscribe(params => {
+  
       const categoryIdString = params.get('categoryId');
       
       if (categoryIdString == "men" || categoryIdString == "women" || categoryIdString == "children"){
@@ -25,18 +59,13 @@ export class ProductListComponent {
       }
       else{
         const categoryId = categoryIdString ? parseInt(categoryIdString, 10) : null;
-        
-        if (categoryId) {
-          this.productService.getProductsByCategory(categoryId).subscribe((products) => {
-            this.products = products;
-        });
-        } else {
-          this.router.navigate(['/']);
-        }
-      }
+      
+        this.getProductsByCategoryId(categoryId);
+      } 
     });
   }
-  getProductsByCategoryName(categoryName: string) {
+
+  private getProductsByCategoryName(categoryName: string) {
     switch (categoryName) {
       case "men":
         this.productService.getAllMaleProducts().subscribe((products) => {
@@ -53,6 +82,16 @@ export class ProductListComponent {
           this.products = products;
       });
       break;
+    }
+  }
+
+  private getProductsByCategoryId(categoryId: number | null){
+    if (categoryId) {
+      this.productService.getProductsByCategory(categoryId).subscribe((products) => {
+        this.products = products;
+    });
+    } else {
+      this.router.navigate(['/']);
     }
   }
 

@@ -61,13 +61,13 @@
         <div class="d-flex justify-content-around">
           <div class="customLink"><a class="d-inline-block p-3" href="#">Kapcsolat</a></div>
           <div class="input-group custom-search">
-            <input id="search-form" type="text" class="form-control" placeholder="Keresés">
+            <input type="text" class="form-control" placeholder="Keresés" [(ngModel)]="searchTerm">
             <div class="input-group-append">
-              <button name="search-submit" class="btn" type="button">
+              <button class="btn" type="button" (click)="search()">
                 <i class="fa fa-search"></i>
               </button>
             </div>
-          </div>
+          </div>          
         </div>
       </div>
     </div>

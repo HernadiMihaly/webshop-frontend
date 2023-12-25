@@ -7,9 +7,11 @@ import { ProductPageComponent } from './component/product_component/product-page
 const routes: Routes = [
   { path: '', component: MainComponent 
   },
-  { path: 'products/:categoryId', component:ProductListComponent
+  { path: 'products/:categoryId', component: ProductListComponent
   },
   { path: 'product/:id', component: ProductPageComponent 
+  },
+  { path: 'products', component: ProductListComponent 
   },
   { path: 'info/products', component: MainComponent 
   }
