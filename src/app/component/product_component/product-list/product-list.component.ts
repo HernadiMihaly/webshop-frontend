@@ -12,7 +12,6 @@ import { CategoryService } from '../../../service/category.service';
 })
 export class ProductListComponent {
   products: Product[] | undefined;
-  parentCategory: Category | undefined;
 
   constructor(private router: Router, private productService: ProductService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute) { }
 
@@ -25,16 +24,9 @@ export class ProductListComponent {
       if (categoryId) {
         this.productService.getProductsByCategory(categoryId).subscribe((products) => {
           this.products = products;
-          
-          this.categoryService.getParentCategory(categoryId).subscribe((parentCategory) => {
-            this.parentCategory = parentCategory;
-            console.log(parentCategory.name)
-        });
       });
       } else {
-        this.productService.getAllProducts().subscribe((products) => {
-          this.products = products;
-        });
+        this.router.navigate(['/']);
       }
     });
     
