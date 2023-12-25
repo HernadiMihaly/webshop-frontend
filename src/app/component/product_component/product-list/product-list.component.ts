@@ -19,17 +19,22 @@ export class ProductListComponent {
     this.activatedRoute.paramMap.subscribe(params => {
 
       const categoryIdString = params.get('categoryId');
-      const categoryId = categoryIdString ? parseInt(categoryIdString, 10) : null;
       
-      if (categoryId) {
-        this.productService.getProductsByCategory(categoryId).subscribe((products) => {
-          this.products = products;
-      });
-      } else {
-        this.router.navigate(['/']);
+      if (categoryIdString == "men" || categoryIdString == "women" || categoryIdString == "children"){
+        //const rootCategoryId = getCategoryIdByName(categoryIdString);
+      }
+      else{
+        const categoryId = categoryIdString ? parseInt(categoryIdString, 10) : null;
+        
+        if (categoryId) {
+          this.productService.getProductsByCategory(categoryId).subscribe((products) => {
+            this.products = products;
+        });
+        } else {
+          this.router.navigate(['/']);
+        }
       }
     });
-    
-
   }
+
 }

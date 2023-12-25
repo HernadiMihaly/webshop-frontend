@@ -14,6 +14,7 @@ import { PopularItemsListComponent } from './component/main_component/popular-it
 import { FooterComponent } from './component/main_component/footer/footer.component';
 import { ProductPageComponent } from './component/product_component/product-page/product-page.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -34,7 +35,9 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideHttpClient(withFetch()),
