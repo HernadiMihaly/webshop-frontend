@@ -21,7 +21,7 @@ export class ProductListComponent {
       const categoryIdString = params.get('categoryId');
       
       if (categoryIdString == "men" || categoryIdString == "women" || categoryIdString == "children"){
-        //const rootCategoryId = getCategoryIdByName(categoryIdString);
+          this.getProductsByCategoryName(categoryIdString);
       }
       else{
         const categoryId = categoryIdString ? parseInt(categoryIdString, 10) : null;
@@ -36,5 +36,25 @@ export class ProductListComponent {
       }
     });
   }
+  getProductsByCategoryName(categoryName: string) {
+    switch (categoryName) {
+      case "men":
+        this.productService.getAllMaleProducts().subscribe((products) => {
+          this.products = products;
+      });
+      break;
+      case "women":
+        this.productService.getAllFemaleProducts().subscribe((products) => {
+          this.products = products;
+      });
+      break;
+      case "children":
+        this.productService.getAllChildrenProducts().subscribe((products) => {
+          this.products = products;
+      });
+      break;
+    }
+  }
+
 
 }

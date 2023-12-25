@@ -22,4 +22,17 @@ export class ProductService {
   public getProductsByCategory(categoryId: number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/category/${categoryId}`);
   }
+
+  public getAllMaleProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/category/name/male`);
+  }
+
+  public getAllFemaleProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/category/name/female`);
+  }
+
+  public getAllChildrenProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/category/name/children`);
+  }
+
 }
