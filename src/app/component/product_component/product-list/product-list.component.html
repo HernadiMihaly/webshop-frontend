@@ -6,49 +6,48 @@
                 Szűrés
             </header>
             <div class="panel-body pb-5">
-                <form role="form product-form">
+                <form [formGroup]="filterForm" (ngSubmit)="filterProducts()">
+                    <!-- Szín -->
                     <div class="form-group filter-element">
                         <label>Szín</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="feherCheckbox">
-                            <label class="form-check-label" for="feherCheckbox">Fehér</label>
+                        <div class="form-check" *ngFor="let color of colors">
+                          <input class="form-check-input" type="checkbox" id="{{color}}Checkbox" (change)="handleColors($event)" value="{{color}}">
+                          <label class="form-check-label" for="{{color}}Checkbox">{{color}}</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="feketeCheckbox">
-                            <label class="form-check-label" for="feketeCheckbox">Fekete</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="pirosCheckbox">
-                            <label class="form-check-label" for="pirosCheckbox">Piros</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="zoldCheckbox">
-                            <label class="form-check-label" for="zoldCheckbox">Zöld</label>
-                        </div>
-                    </div>                    
+                      </div>
+
+                    <!-- Méret -->
                     <div class="form-group filter-element">
-                        <label>Méret</label>
-                        <select class="form-control hasCustomSelect" style="width: 231px; position: absolute; opacity: 0; height: 34px; font-size: 12px;">
-                            <option>XS</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                        </select>
-                        <span class="customSelect form-control" style="display: inline-block;"><span class="customSelectInner" style="width: 209px; display: inline-block;">S</span></span>
+                      <label>Méret</label>
+                      <select class="form-control" formControlName="size">
+                        <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
+                      </select>
                     </div>
-                    <div class="form-group filter-element">
-                        <label for="customRange3" class="form-label">Ár</label>
-                        <input type="range" class="form-range" min="0" max="100000" step="1" id="customRange3">
+                  
+                    <!-- Ár -->
+                    <div class="form-group filter-element row">
+                        <div class="col-md-6">
+                          <label for="customRange3" class="form-label">Ár (Min.)</label>
+                          <input type="number" min="0" step="100" class="form-control" id="customRange3" formControlName="minPrice">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="customRange3" class="form-label">Ár (Max.)</label>
+                          <input type="number" min="0" step="100" class="form-control" id="customRange3" formControlName="maxPrice">
+                        </div>
                     </div>
+                      
+
+
+                    <!-- Szűrés gomb -->
                     <button id="btn-filter" class="btn btn-primary" type="submit">Szűrés</button>
-                </form>
+                  </form>
+                  
             </div>
         </section>
     </div>
     <div class="col-md-9">
         <div class="row product-list">
-            <div *ngFor="let product of products" class="col-md-4 pb-4">
+          <div *ngFor="let product of filteredProducts || products" class="col-md-4 pb-4">
                 <section class="panel border-bottom">
                     <div class="pro-img-box">
                         <a [routerLink]="['/product/', product.id]" class="pro-title">
