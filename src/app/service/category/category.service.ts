@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Category } from './category';
+import { Injectable } from '@angular/core';
+import { Category } from '../category/category';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

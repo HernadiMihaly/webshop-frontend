@@ -2,7 +2,7 @@ export interface  ProductStock {
 
     id: number;
 
-    size: String;
+    size: string;
 
     quantity: number;
     

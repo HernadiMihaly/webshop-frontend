@@ -16,11 +16,13 @@ export interface  Product {
     materials: String;
 
     brand: String;
+    
+    createdAt: Date;
 
     category: number;
 
     productPhotos: ProductPhoto[]; 
 
-    productStock: ProductStock[];
+    productStocks: ProductStock[];
 
 }

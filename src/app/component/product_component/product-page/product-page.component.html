@@ -25,7 +25,7 @@
                     <span>Ár: {{product.price}}</span>
                 </div>
                 <div class="container-item-sizes">
-                    <span *ngFor="let productStockElement of product.productStock">
+                    <span *ngFor="let productStockElement of product.productStocks">
                     <span *ngIf="productStockElement.quantity>0" class="item-size-space">
                             <button (click)="displayQuantity(productStockElement.quantity)" class="btn btn-outline-dark flex-shrink-0" type="button">
                                 {{productStockElement.size}}

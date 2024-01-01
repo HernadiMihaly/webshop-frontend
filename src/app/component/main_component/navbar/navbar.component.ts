@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { CategoryService } from '../../../service/category.service';
-import { ActivatedRoute } from '@angular/router';
-import { Category } from '../../../service/category';
+import { CategoryService } from '../../../service/category/category.service';
+import { Category } from '../../../service/category/category';
 import { Router } from '@angular/router';
 import { __values } from 'tslib';
 

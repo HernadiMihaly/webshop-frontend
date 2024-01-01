@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../../../service/user.service';
-import { SubscribedUser } from '../../../service/subscribeduser';
+import { UserService } from '../../../service/user/user.service';
+import { SubscribedUser } from '../../../service/user/subscribeduser';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';

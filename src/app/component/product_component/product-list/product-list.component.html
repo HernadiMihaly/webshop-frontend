@@ -1,73 +1,137 @@
 <div class="container bootdey">
-    <div class="row">
-    <div class="col-md-3">
-        <section class="panel">
-            <header class="panel-heading" style="font-weight: bold; padding-bottom: 8pt; padding-top: 8pt;">
-                Szűrés
-            </header>
-            <div class="panel-body pb-5">
-                <form [formGroup]="filterForm" (ngSubmit)="filterProducts()">
-                    <!-- Szín -->
-                    <div class="form-group filter-element">
-                        <label>Szín</label>
-                        <div class="form-check" *ngFor="let color of colors">
-                          <input class="form-check-input" type="checkbox" id="{{color}}Checkbox" (change)="handleColors($event)" value="{{color}}">
-                          <label class="form-check-label" for="{{color}}Checkbox">{{color}}</label>
-                        </div>
-                      </div>
-
-                    <!-- Méret -->
-                    <div class="form-group filter-element">
-                      <label>Méret</label>
-                      <select class="form-control" formControlName="size">
-                        <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
-                      </select>
-                    </div>
-                  
-                    <!-- Ár -->
-                    <div class="form-group filter-element row">
-                        <div class="col-md-6">
-                          <label for="customRange3" class="form-label">Ár (Min.)</label>
-                          <input type="number" min="0" step="100" class="form-control" id="customRange3" formControlName="minPrice">
-                        </div>
-                        <div class="col-md-6">
-                          <label for="customRange3" class="form-label">Ár (Max.)</label>
-                          <input type="number" min="0" step="100" class="form-control" id="customRange3" formControlName="maxPrice">
-                        </div>
-                    </div>
-                      
-
-
-                    <!-- Szűrés gomb -->
-                    <button id="btn-filter" class="btn btn-primary" type="submit">Szűrés</button>
-                  </form>
-                  
+  <div class="row pt-2">
+    <div class="col-md-3 pb-5">
+      <section class="panel">
+        <div class="panel-element">
+          <header class="panel-element-heading">Szűrés / Rendezés</header>
+          <form [formGroup]="filterForm">
+            <!-- Rendezés -->
+            <div class="form-group filter-element mb-1.5 mt-2">
+              <label>Rendezés</label>
+              <select
+                class="form-control"
+                formControlName="sortBy"
+                (change)="updateProducts()"
+              >
+                <option value="newest">Legújabb</option>
+                <option value="ascending">Ár (növekvő)</option>
+                <option value="descending">Ár (csökkenő)</option>
+              </select>
             </div>
-        </section>
-    </div>
-    <div class="col-md-9">
-        <div class="row product-list">
-          <div *ngFor="let product of filteredProducts || products" class="col-md-4 pb-4">
-                <section class="panel border-bottom">
-                    <div class="pro-img-box">
-                        <a [routerLink]="['/product/', product.id]" class="pro-title">
-                           <img [src]="product.productPhotos.at(0)?.imageUrl" alt="" />
-                        </a>    
-                    </div>
-                    <div class="panel-body text-center">
-                        <h4>
-                            <a [routerLink]="['/product/', product.id]" class="pro-title text-decoration-none">{{product.name}}</a>
-                        </h4>
-                        <div class="price">{{ product.price }} Ft</div>
-                    </div>
-                    <div class="text-center pt-3 pb-3">
-                        <a class="btn btn-outline-dark" href="#">
-                            Kosárba <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                </section>
+
+            <!-- Szín -->
+            <div class="form-group filter-element">
+              <label>Szín</label>
+              <div class="form-check" *ngFor="let color of colors">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [id]="color + 'Checkbox'"
+                  (change)="getProductsByColor($event)"
+                  value="{{ color }}"
+                />
+                <label class="form-check-label" for="{{ color }}Checkbox">{{
+                  color
+                }}</label>
+              </div>
             </div>
+
+            <!-- Méret -->
+            <div class="form-group filter-element mb-1.5">
+              <label>Méret</label>
+              <select
+                class="form-control"
+                formControlName="size"
+                (change)="updateProducts()"
+              >
+                <option value="all">Összes</option>
+                <option *ngFor="let size of sizes" [value]="size">
+                  {{ size }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Ár -->
+            <div class="form-group filter-element mb-1.5">
+              <label>Ár (min - max)</label>
+              <div class="price-content">
+                <div>
+                  <label>Min</label>
+                  <p id="min-value">0 Ft</p>
+                </div>
+
+                <div>
+                  <label>Max</label>
+                  <p id="max-value">50000 Ft</p>
+                </div>
+              </div>
+
+              <div class="range-slider">
+                <div class="range-fill"></div>
+
+                <input
+                  #minInput
+                  type="range"
+                  class="min-price"
+                  [value]="minValue"
+                  min="0"
+                  max="50000"
+                  step="500"
+                />
+                <input
+                  #maxInput
+                  type="range"
+                  class="max-price"
+                  [value]="maxValue"
+                  min="0"
+                  max="50000"
+                  step="500"
+                />
+              </div>
+            </div>
+          </form>
         </div>
+      </section>
     </div>
+
+    <div class="col-md-9">
+      <div class="row product-list">
+        <div *ngFor="let product of products" class="col-md-4 pb-4">
+          <section class="panel border-bottom">
+            <div class="pro-img-box">
+              <a [routerLink]="['/product/', product.id]" class="pro-title">
+                <img [src]="product.productPhotos.at(0)?.imageUrl" alt="" />
+              </a>
+            </div>
+            <div class="panel-body text-center">
+              <h4>
+                <a
+                  [routerLink]="['/product/', product.id]"
+                  class="pro-title text-decoration-none"
+                  >{{ product.name }}</a
+                >
+              </h4>
+              <div class="price">{{ product.price }} Ft</div>
+            </div>
+            <div class="d-flex justify-content-center mt-2 mb-1">
+              <div *ngFor="let productStock of product.productStocks">
+                <div
+                  (click)="setSelectedSize(productStock.size)"
+                  *ngIf="productStock.quantity> 0" 
+                  class="clickable pro-size-list"
+                  tabindex="0">
+                  {{productStock.size}}
+                </div>
+              </div>
+            </div>                       
+            <div class="text-center pt-2 pb-3">
+              <a class="btn btn-outline-dark" href="#">
+                Kosárba <i class="fa fa-shopping-cart"></i>
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
