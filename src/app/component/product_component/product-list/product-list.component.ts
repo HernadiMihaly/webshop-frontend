@@ -6,6 +6,9 @@ import { HttpParams } from '@angular/common/http';
 import { ProductService } from '../../../service/product/product.service';
 import { Product } from '../../../service/product/product';
 import { Subject, debounceTime } from 'rxjs';
+import { CartItem } from '../../../service/shoppingcart/cartitem';
+import { CartService } from '../../../service/shoppingcart/cart.service';
+import { FormatterService } from '../../../service/util/formatter.service';
 
 @Component({
   selector: 'app-product-list',
@@ -38,7 +41,8 @@ export class ProductListComponent implements AfterViewInit {
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private cartService: CartService,
+    private formatterService: FormatterService
   ) {
     // Initialize form group
     this.filterForm = this.formBuilder.group({
@@ -122,7 +126,7 @@ export class ProductListComponent implements AfterViewInit {
   }
 
   private loadProductsBySearchParams(searchParam: string) {
-    this.productService.getAllProducts(this.getHttpParams()).subscribe((products) => {
+    this.productService.getAllProductsByParams(this.getHttpParams()).subscribe((products) => {
       /**TODO: ezt a logikát ki kéne szervezni majd */
       const searchTerms = searchParam.toLowerCase().split(' ');
 
@@ -265,4 +269,24 @@ export class ProductListComponent implements AfterViewInit {
     }
   }
 
+  addToCart(product: Product){
+    if (this.selectedSize){
+    const cartItem: CartItem = {
+      id: product.id.toString() + this.selectedSize,
+      name: product.name,
+      price: product.price,
+      size: this.selectedSize,
+      quantity: 1,
+      image: product.productPhotos?.[0]?.imageUrl,
+      color: product.color,
+      available: this.productService.getAvailableQuantityBySize(product, this.selectedSize) || 0
+    };
+
+    this.cartService.addItem(cartItem);
+  }
+  }
+
+  formatPrice(price: number): string{
+    return this.formatterService.formatPrice(price); 
+  }
 }

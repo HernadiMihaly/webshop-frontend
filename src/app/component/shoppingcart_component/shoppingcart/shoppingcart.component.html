@@ -1,0 +1,108 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Montserrat"
+  rel="stylesheet"
+/>
+<div class="page">
+  <section class="shopping-cart dark">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="custom-dark-text">Kosár</h2>
+        <p>A szállítás 20.000 Ft felett ingyenes.</p>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="items">
+              <div *ngFor="let item of this.cartItems" class="product border-bottom">
+                <div class="row">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-3">
+                    <img
+                      class="img-fluid mx-auto d-block image"
+                      [src]="item.image"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="info">
+                      <div class="row align-items-center">
+                        <div class="col-md-4 product-name">
+                          <div class="product-name">
+                            <a class="custom-dark-text">{{ item.name }}</a>
+                            <div class="product-info">
+                              <div>
+                                Szín:
+                                <span class="value">{{ item.color }}</span>
+                              </div>
+                              <div>
+                                Méret:
+                                <span class="value">{{ item.size }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="qty col-md-3 quantity">
+                          <span
+                            class="minus bg-dark"
+                            (click)="decrementQuantity(item)"
+                            >-</span
+                          >
+                          <input
+                            type="number"
+                            class="count"
+                            name="qty"
+                            [value]="item.quantity"
+                            [max]="item.available"
+                            readonly
+                          />
+                          <span
+                            class="plus bg-dark"
+                            (click)="incrementQuantity(item)"
+                            >+</span
+                          >
+                        </div>
+                        <div class="col-md-3 product-price">
+                          <span>{{ formatPrice(item.price) }} Ft </span>
+                        </div>
+                        <div class="col-md-1 d-flex align-items-center">
+                          <i
+                            (click)="removeFromCart(item.id)"
+                            class="bi bi-trash clickable"
+                            style="font-size: 1.1rem"
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <div class="summary custom-dark-bg">
+              <h3>Összegzés</h3>
+              <div class="summary-item">
+                <span class="text">Összesen</span
+                ><span class="price">{{ formatPrice(summary) }} Ft</span>
+              </div>
+              <div class="summary-item">
+                <span class="text">Kedvezmény</span
+                ><span class="price"> - {{formatPrice(0)}} Ft</span>
+              </div>
+              <div class="summary-item">
+                <span class="text">Szállítás</span
+                ><span class="price">Számítás alatt</span>
+              </div>
+              <div class="summary-item">
+                <span class="text">Végösszeg</span
+                ><span class="price">{{ formatPrice(summary * 1 - discount) }} Ft</span>
+              </div>
+              <button type="button" class="btn btn-dark btn-lg btn-block">
+                <i class="bi bi-credit-card"></i> Fizetés
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

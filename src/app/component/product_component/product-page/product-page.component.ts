@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Product } from '../../../service/product/product';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../service/product/product.service';
+import { CartService } from '../../../service/shoppingcart/cart.service';
+import { CartItem } from '../../../service/shoppingcart/cartitem';
+import { FormatterService } from '../../../service/util/formatter.service';
 
 @Component({
   selector: 'app-product-page',
@@ -12,8 +15,10 @@ export class ProductPageComponent {
 
   product: Product | undefined;
   selectedQuantity: number | undefined;
+  selectedSize: string = "";
+  addToCartQuantity: number = 1;
 
-  constructor(private router: Router, private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  constructor(private formatterService: FormatterService,private cartService: CartService, private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -30,9 +35,38 @@ export class ProductPageComponent {
     
   }
 
+  selectSize(size: string, quantity:number): void {
+    this.selectedSize = size;
+
+    this.displayQuantity(quantity); 
+
+    console.log("választott méret:" + this.selectedSize);
+  }
+
   displayQuantity(quantity: number) {
       this.selectedQuantity = quantity;
-    }
+  }
 
+  addToCart() {
+    if(this.selectedSize && this.product){
+      const cartItem: CartItem = {
+        id: this.product.id.toString() + this.selectedSize,
+        name: this.product.name,
+        price: this.product.price,
+        size: this.selectedSize,
+        quantity: this.addToCartQuantity,
+        image: this.product.productPhotos?.[0]?.imageUrl,
+        color: this.product.color,
+        available: this.productService.getAvailableQuantityBySize(this.product, this.selectedSize) || 0
+      };
+
+    
+      this.cartService.addItem(cartItem);
+    }
+  }
+
+  formatPrice(price: number): string {
+    return this.formatterService.formatPrice(price);
+  }
 
 }

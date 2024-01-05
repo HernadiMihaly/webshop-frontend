@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CartService } from './service/shoppingcart/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private cartService: CartService) {
+    if (typeof localStorage !== 'undefined') {
+      cartService.loadCart()
+    }
   }
 
   public open(modal: any): void {

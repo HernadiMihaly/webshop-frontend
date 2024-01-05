@@ -111,7 +111,7 @@
                   >{{ product.name }}</a
                 >
               </h4>
-              <div class="price">{{ product.price }} Ft</div>
+              <div class="price">{{ formatPrice(product.price) }} Ft</div>
             </div>
             <div class="d-flex justify-content-center mt-2 mb-1">
               <div *ngFor="let productStock of product.productStocks">
@@ -125,7 +125,7 @@
               </div>
             </div>                       
             <div class="text-center pt-2 pb-3">
-              <a class="btn btn-outline-dark" href="#">
+              <a (click)="addToCart(product)" class="btn btn-outline-dark">
                 Kosárba <i class="fa fa-shopping-cart"></i>
               </a>
             </div>

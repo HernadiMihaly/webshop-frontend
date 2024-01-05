@@ -15,6 +15,9 @@ import { FooterComponent } from './component/main_component/footer/footer.compon
 import { ProductPageComponent } from './component/product_component/product-page/product-page.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CartService } from './service/shoppingcart/cart.service';
+import { ShoppingcartComponent } from './component/shoppingcart_component/shoppingcart/shoppingcart.component'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SubscribePanelComponent,
     PopularItemsListComponent,
     FooterComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ShoppingcartComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +39,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     CarouselModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
     provideHttpClient(withFetch()),
-    provideClientHydration()
+    provideClientHydration(),
+    CartService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

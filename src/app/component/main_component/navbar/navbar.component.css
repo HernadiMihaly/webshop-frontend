@@ -28,6 +28,10 @@
   justify-content: space-between;
 }
 
+.navbar-top-panel > a{
+  color: white;
+}
+
 .navbar-top-flag, .navbar-top-flag > img {
   margin-left: 3pt;
   margin-bottom: 3pt;

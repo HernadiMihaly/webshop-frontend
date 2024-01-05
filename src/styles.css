@@ -10,7 +10,7 @@
 
 .custom-dark-text{
     text-decoration : none;
-    color: #181616;
+    color: #181616 !important;
     opacity: 0.95;
 }
 

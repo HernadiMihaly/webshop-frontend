@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  baseUrl = `http://localhost:8080/products`
+  baseUrl = `http://localhost:8080/products`;
+  byParams = `/byParams`;
 
   constructor(private http: HttpClient) { }
 
-  public getAllProducts(queryParams: HttpParams): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl, {params: queryParams});
+  public getAllProductsByParams(queryParams: HttpParams): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + this.byParams, {params: queryParams});
   }
 
   public getProduct(id: number): Observable<Product> {
@@ -35,4 +36,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrl}/category/name/children`, {params: queryParams});
   }
 
+  public getAvailableQuantityBySize(product: Product, size: string){
+    return product.productStocks.find(stock => stock.size == size)?.quantity;
+  }
 }

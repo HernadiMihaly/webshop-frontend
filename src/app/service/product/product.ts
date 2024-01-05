@@ -5,17 +5,17 @@ export interface  Product {
 
     id: number;
 
-    name: String;
+    name: string;
 
-    color: String;
+    color: string;
 
     price: number;
 
-    description: String;
+    description: string;
 
-    materials: String;
+    materials: string;
 
-    brand: String;
+    brand: string;
     
     createdAt: Date;
 
