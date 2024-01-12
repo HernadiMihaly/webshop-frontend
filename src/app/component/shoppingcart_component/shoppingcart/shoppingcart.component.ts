@@ -14,36 +14,36 @@ export class ShoppingcartComponent implements OnInit {
   discount: number = 0;
   quantityOptions: number[] = Array.from({ length: 10 }, (_, i) => i + 1);
 
-  constructor(private formatterService: FormatterService, private cartService: CartService){}
+  constructor(private formatterService: FormatterService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
     this.summary = this.cartService.getSummaryPrice();
   }
 
-  removeFromCart(itemId: string){
+  removeFromCart(itemId: string) {
     this.cartService.removeItem(itemId);
 
     this.ngOnInit();
   }
 
-  incrementQuantity(item: CartItem | undefined){
-    if (item && ! (item.quantity + 1 > item.available)) {
+  incrementQuantity(item: CartItem | undefined) {
+    if (item && !(item.quantity + 1 > item.available)) {
       this.updateQuantity(item, item.quantity + 1);
     }
   }
 
-  decrementQuantity(item: CartItem | undefined){
+  decrementQuantity(item: CartItem | undefined) {
     if (item) {
       this.updateQuantity(item, item.quantity - 1);
     }
   }
 
-  updateQuantity(item: CartItem | undefined, quantity: number){
-    if(item){
+  updateQuantity(item: CartItem | undefined, quantity: number) {
+    if (item) {
       this.cartService.changeQuantity(item.id, quantity);
 
-    this.ngOnInit();
+      this.ngOnInit();
     }
   }
 

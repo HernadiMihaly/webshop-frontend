@@ -19,9 +19,9 @@ export class NavbarComponent {
   rootCategories: Category[] | undefined;
 
   dropdownImages = {
-    'men' : "https://images.pexels.com/photos/6227715/pexels-photo-6227715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    'women' : "https://images.pexels.com/photos/6014873/pexels-photo-6014873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    'children' : "https://images.pexels.com/photos/6266237/pexels-photo-6266237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    'men': "https://images.pexels.com/photos/6227715/pexels-photo-6227715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    'women': "https://images.pexels.com/photos/6014873/pexels-photo-6014873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    'children': "https://images.pexels.com/photos/6266237/pexels-photo-6266237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   };
 
   itemCount = this.cartService.getCartQuantity();
@@ -31,11 +31,11 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe((categories) => {
       this.categories = categories;
-      
+
       this.getRootCategories(categories);
     });
 
-     this.cartService.cart$.subscribe(totalQuantity => {
+    this.cartService.cart$.subscribe(totalQuantity => {
       this.itemCount = totalQuantity;
     });
   }
@@ -56,7 +56,7 @@ export class NavbarComponent {
     if (categories) {
       this.rootCategories = categories.filter(category => !category.parentId);
     }
-  }  
+  }
 
   getSubcategoriesForCategory(category: Category): Category[] {
     if (this.categories) {
@@ -64,5 +64,5 @@ export class NavbarComponent {
     }
     return [];
   }
-  
+
 }

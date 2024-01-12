@@ -34,7 +34,7 @@ export class ProductListComponent implements AfterViewInit {
   // Range values
   minValue = 0;
   maxValue = 50000;
-  
+
   private debounceSubject = new Subject<void>();
 
   constructor(
@@ -105,7 +105,7 @@ export class ProductListComponent implements AfterViewInit {
   }
 
   // Private methods
-  private clearForm(){
+  private clearForm() {
     this.filterForm = this.formBuilder.group({
       colors: this.formBuilder.array([]),
       size: 'all',
@@ -177,7 +177,7 @@ export class ProductListComponent implements AfterViewInit {
 
   private getProductsByCategoryId(categoryId: number | null) {
     if (categoryId) {
-      if (this.prevPath != ("/products/" + categoryId)){
+      if (this.prevPath != ("/products/" + categoryId)) {
         this.clearForm();
       }
       this.productService.getProductsByCategory(categoryId, this.getHttpParams()).subscribe((products) => {
@@ -232,17 +232,17 @@ export class ProductListComponent implements AfterViewInit {
       this.minValue = minPrice;
       this.maxValue = maxPrice;
     }
-    
+
     this.updateDisplayedRangeValues();
   }
 
   private updateDisplayedRangeValues(...args: any[]) {
     if (typeof document !== 'undefined') {
-    const minValueElement = document.getElementById('min-value');
-    const maxValueElement = document.getElementById('max-value');
+      const minValueElement = document.getElementById('min-value');
+      const maxValueElement = document.getElementById('max-value');
 
       if (minValueElement && maxValueElement) {
-        if (args.length > 0){
+        if (args.length > 0) {
           minValueElement.innerHTML = args[0] + ' Ft';
           maxValueElement.innerHTML = args[1] + ' Ft';
         } else {
@@ -253,39 +253,39 @@ export class ProductListComponent implements AfterViewInit {
     }
   }
 
-  private uncheckCheckboxElements(){
+  private uncheckCheckboxElements() {
     if (typeof document !== 'undefined') {
       this.colors.forEach(color => {
         const checkbox = document.getElementById(
           color + 'Checkbox'
         ) as HTMLInputElement | null;
-        
+
         if (checkbox)
           checkbox.checked = false;
       })
     }
   }
 
-  addToCart(product: Product){
-    if (this.selectedSize){
-    const cartItem: CartItem = {
-      id: product.id.toString() + this.selectedSize,
-      name: product.name,
-      price: product.price,
-      size: this.selectedSize,
-      quantity: 1,
-      image: product.productPhotos?.[0]?.imageUrl,
-      color: product.color,
-      available: this.productService.getAvailableQuantityBySize(product, this.selectedSize) || 0
-    };
+  addToCart(product: Product) {
+    if (this.selectedSize) {
+      const cartItem: CartItem = {
+        id: product.id.toString() + this.selectedSize,
+        name: product.name,
+        price: product.price,
+        size: this.selectedSize,
+        quantity: 1,
+        image: product.productPhotos?.[0]?.imageUrl,
+        color: product.color,
+        available: this.productService.getAvailableQuantityBySize(product, this.selectedSize) || 0
+      };
 
-    this.cartService.addItem(cartItem);
+      this.cartService.addItem(cartItem);
     }
 
     this.selectedSize = "";
   }
 
-  formatPrice(price: number): string{
-    return this.formatterService.formatPrice(price); 
+  formatPrice(price: number): string {
+    return this.formatterService.formatPrice(price);
   }
 }

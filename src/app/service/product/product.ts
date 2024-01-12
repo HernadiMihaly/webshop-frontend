@@ -1,7 +1,7 @@
 import { ProductPhoto } from "./productphoto";
 import { ProductStock } from "./productstock";
 
-export interface  Product {
+export interface Product {
 
     id: number;
 
@@ -16,12 +16,12 @@ export interface  Product {
     materials: string;
 
     brand: string;
-    
+
     createdAt: Date;
 
     category: number;
 
-    productPhotos: ProductPhoto[]; 
+    productPhotos: ProductPhoto[];
 
     productStocks: ProductStock[];
 

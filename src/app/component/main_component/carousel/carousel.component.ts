@@ -17,7 +17,7 @@ export class CarouselComponent {
     { image: '../../../assets/images/children.jpg', text: 'gyerek kollekció', link: '/products/children' }
   ];
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) { }
 
   splitText(text: string): string[] {
     return text.split(' ');

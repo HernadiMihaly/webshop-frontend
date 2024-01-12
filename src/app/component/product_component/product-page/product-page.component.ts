@@ -18,31 +18,31 @@ export class ProductPageComponent {
   selectedSize: string = "";
   addToCartQuantity: number = 1;
 
-  constructor(private formatterService: FormatterService,private cartService: CartService, private productService: ProductService, private activatedRoute: ActivatedRoute) { }
+  constructor(private formatterService: FormatterService, private cartService: CartService, private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
 
       const productIdString = params.get('id');
       const productId = productIdString ? parseInt(productIdString, 10) : null;
-      
+
       if (productId) {
         this.productService.getProduct(productId).subscribe((product) => {
           this.product = product;
         });
       }
     });
-    
+
   }
 
   selectSize(size: string, quantity: number): void {
     this.selectedSize = size;
 
-    this.displayQuantity(quantity); 
+    this.displayQuantity(quantity);
   }
 
   displayQuantity(quantity: number) {
-      this.selectedQuantity = quantity;
+    this.selectedQuantity = quantity;
   }
 
   updateQuantity(newQuantity: number): void {
@@ -52,7 +52,7 @@ export class ProductPageComponent {
   }
 
   addToCart() {
-    if(this.selectedSize && this.product){
+    if (this.selectedSize && this.product) {
       const cartItem: CartItem = {
         id: this.product.id.toString() + this.selectedSize,
         name: this.product.name,
@@ -72,5 +72,4 @@ export class ProductPageComponent {
   formatPrice(price: number): string {
     return this.formatterService.formatPrice(price);
   }
-
 }

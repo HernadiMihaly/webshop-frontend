@@ -17,7 +17,7 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CartService } from './service/shoppingcart/cart.service';
-import { ShoppingcartComponent } from './component/shoppingcart_component/shoppingcart/shoppingcart.component'; 
+import { ShoppingcartComponent } from './component/shoppingcart_component/shoppingcart/shoppingcart.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,6 @@ import { ShoppingcartComponent } from './component/shoppingcart_component/shoppi
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  
+export class AppModule {
+
 }

@@ -7,16 +7,16 @@ export class FormatterService {
 
   constructor() { }
 
-  formatPrice(price: number): string{
+  formatPrice(price: number): string {
     let priceString = price.toString();
 
     let tempLength = priceString.length;
     let i = Math.floor(tempLength / 3);
 
     while (i > 0 && tempLength > 3) {
-        tempLength -= 3;
-        priceString = priceString.slice(0, tempLength) + ' ' + priceString.slice(tempLength);
-        i--;
+      tempLength -= 3;
+      priceString = priceString.slice(0, tempLength) + ' ' + priceString.slice(tempLength);
+      i--;
     }
 
     return priceString;

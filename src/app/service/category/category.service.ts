@@ -11,11 +11,11 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCategories(): Observable<Category[]>{
+  getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.baseUrl}`);
   }
 
-  getParentCategory(categoryId: Number): Observable<Category>{
+  getParentCategory(categoryId: Number): Observable<Category> {
     return this.http.get<Category>(`${this.baseUrl}/${categoryId}/parent`);
   }
 

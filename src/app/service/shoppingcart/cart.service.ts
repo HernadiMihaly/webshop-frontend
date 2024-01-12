@@ -10,12 +10,12 @@ export class CartService {
   private cartSubject: BehaviorSubject<number> = new BehaviorSubject<number>(this.getCartQuantity());
   cart$ = this.cartSubject.asObservable();
 
-  constructor(@Optional() @SkipSelf() cartService?: CartService){}
+  constructor(@Optional() @SkipSelf() cartService?: CartService) { }
 
   addItem(item: CartItem) {
     if (item.quantity > 0) {
       const itemIndex = this.items.findIndex(i => i.id === item.id);
-    
+
       if (itemIndex !== -1) {
         if ((this.items[itemIndex].quantity + item.quantity) <= item.available) {
           this.items[itemIndex].quantity += item.quantity;
@@ -25,21 +25,21 @@ export class CartService {
           this.items.push(item);
         }
       }
-    
+
       this.saveCart();
       this.updateCart();
     }
   }
-  
-  removeItem(id: string){
+
+  removeItem(id: string) {
     this.items = this.items.filter(i => i.id !== id);
-    
+
     this.saveCart();
     this.updateCart();
   }
 
-  changeQuantity(id: string, quantity: number){
-    if (quantity <= 0){
+  changeQuantity(id: string, quantity: number) {
+    if (quantity <= 0) {
       this.removeItem(id);
     } else {
       const foundItem = this.items.find(i => i.id === id);
@@ -55,13 +55,13 @@ export class CartService {
 
   saveCart(): void {
     const itemsJson = JSON.stringify(this.items);
-  
+
     localStorage.setItem('cart_items', itemsJson);
   }
 
   loadCart(): void {
     const storedItems = localStorage.getItem('cart_items');
-  
+
     if (storedItems) {
       try {
         this.items = JSON.parse(storedItems);
@@ -71,38 +71,38 @@ export class CartService {
     }
   }
 
-  storeCartQuantity(){
+  storeCartQuantity() {
     const totalQuantity = this.getCartQuantity();
     this.cartSubject.next(totalQuantity);
   }
 
-  getCartItems(): CartItem[]{
+  getCartItems(): CartItem[] {
     const storedItems = localStorage.getItem('cart_items');
-    
-    if (storedItems){
+
+    if (storedItems) {
       const cartItems: CartItem[] = JSON.parse(storedItems);
-      
+
       return cartItems;
     }
 
     return [];
   }
 
-  getSummaryPrice(): number{
+  getSummaryPrice(): number {
     let sum = 0;
 
-    this.items.forEach(item => sum += (item.price*item.quantity))
+    this.items.forEach(item => sum += (item.price * item.quantity))
 
     return sum;
   }
 
-  getCartQuantity(): number{
+  getCartQuantity(): number {
     let sum = 0;
 
     this.items.forEach(item => sum += item.quantity)
 
     return sum;
-    
+
   }
 
   public updateCart() {
@@ -110,5 +110,5 @@ export class CartService {
     this.cartSubject.next(totalQuantity);
     this.saveCart();
   }
-  
+
 }
