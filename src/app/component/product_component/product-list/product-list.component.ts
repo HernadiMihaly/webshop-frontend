@@ -80,13 +80,6 @@ export class ProductListComponent implements AfterViewInit {
 
   // Public methods
   updateProducts() {
-    console.log("colors= " + this.filterForm.value.colors);
-    console.log("size= " + this.filterForm.value.size);
-    console.log("sortBy= " + this.filterForm.value.sortBy);
-    console.log("minValue= " + this.minValue);
-    console.log("maxValue= " + this.maxValue);
-    console.log("----------------------------------------------------------- ");
-
     this.activatedRoute.queryParams.subscribe(params => {
       const searchParam = params['search'];
 
@@ -103,8 +96,12 @@ export class ProductListComponent implements AfterViewInit {
     this.updateProducts();
   }
 
-  setSelectedSize(selectedSize : string){
-    this.selectedSize = selectedSize;
+  setSelectedSize(size: string): void {
+    this.selectedSize = size;
+  }
+
+  clearSelectedSize(): void {
+    this.selectedSize = '';
   }
 
   // Private methods
@@ -283,7 +280,9 @@ export class ProductListComponent implements AfterViewInit {
     };
 
     this.cartService.addItem(cartItem);
-  }
+    }
+
+    this.selectedSize = "";
   }
 
   formatPrice(price: number): string{

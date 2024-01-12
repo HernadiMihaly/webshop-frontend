@@ -6,27 +6,31 @@ import { BehaviorSubject, startWith } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-  items: CartItem[] = []
-  private cartSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private items: CartItem[] = []
+  private cartSubject: BehaviorSubject<number> = new BehaviorSubject<number>(this.getCartQuantity());
   cart$ = this.cartSubject.asObservable();
 
   constructor(@Optional() @SkipSelf() cartService?: CartService){}
 
-  addItem(item: CartItem){
-    if (item.quantity>=0){
+  addItem(item: CartItem) {
+    if (item.quantity > 0) {
       const itemIndex = this.items.findIndex(i => i.id === item.id);
-
+    
       if (itemIndex !== -1) {
-        this.items[itemIndex].quantity += item.quantity;
+        if ((this.items[itemIndex].quantity + item.quantity) <= item.available) {
+          this.items[itemIndex].quantity += item.quantity;
+        }
       } else {
-        this.items.push(item);
+        if (item.quantity <= item.available) {
+          this.items.push(item);
+        }
       }
-
+    
       this.saveCart();
       this.updateCart();
     }
   }
-
+  
   removeItem(id: string){
     this.items = this.items.filter(i => i.id !== id);
     
@@ -41,12 +45,12 @@ export class CartService {
       const foundItem = this.items.find(i => i.id === id);
 
       if (foundItem) {
-        foundItem.quantity = quantity;
+        foundItem.quantity = Math.min(quantity, foundItem.available);
       }
-    }
 
-    this.saveCart();
-    this.updateCart();
+      this.saveCart();
+      this.updateCart();
+    }
   }
 
   saveCart(): void {
@@ -65,6 +69,11 @@ export class CartService {
         console.error('Hiba a kosár betöltésekor:', error);
       }
     }
+  }
+
+  storeCartQuantity(){
+    const totalQuantity = this.getCartQuantity();
+    this.cartSubject.next(totalQuantity);
   }
 
   getCartItems(): CartItem[]{
@@ -101,10 +110,5 @@ export class CartService {
     this.cartSubject.next(totalQuantity);
     this.saveCart();
   }
-/*
-  getCartItem(): CartItem{
-    
-  }
   
-  */
 }

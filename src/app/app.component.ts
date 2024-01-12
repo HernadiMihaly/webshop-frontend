@@ -11,7 +11,8 @@ export class AppComponent {
 
   constructor(private modalService: NgbModal, private cartService: CartService) {
     if (typeof localStorage !== 'undefined') {
-      cartService.loadCart()
+      cartService.loadCart();
+      cartService.storeCartQuantity();
     }
   }
 

@@ -35,16 +35,20 @@ export class ProductPageComponent {
     
   }
 
-  selectSize(size: string, quantity:number): void {
+  selectSize(size: string, quantity: number): void {
     this.selectedSize = size;
 
     this.displayQuantity(quantity); 
-
-    console.log("választott méret:" + this.selectedSize);
   }
 
   displayQuantity(quantity: number) {
       this.selectedQuantity = quantity;
+  }
+
+  updateQuantity(newQuantity: number): void {
+    if (newQuantity >= 0) {
+      this.addToCartQuantity = newQuantity;
+    }
   }
 
   addToCart() {
@@ -60,8 +64,8 @@ export class ProductPageComponent {
         available: this.productService.getAvailableQuantityBySize(this.product, this.selectedSize) || 0
       };
 
-    
       this.cartService.addItem(cartItem);
+
     }
   }
 
