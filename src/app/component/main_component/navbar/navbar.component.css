@@ -1,7 +1,3 @@
-* {
-    font-family: 'Open Sans', sans-serif;
-  }
-
 .customLink > a{
   text-decoration : none;
   color: #1b1919;
@@ -16,6 +12,7 @@
 }
 
 .navbar-top{
+  font-family: 'Montserrat', sans-serif;
   color: white;
   text-align: center;
   padding-top: 2pt;
@@ -69,6 +66,7 @@ app-shopping-cart-dropdown {
 }
 
 .navBarBottom{
+  font-family: 'Open Sans', sans-serif;
   background-color: white;
   font-weight: bold;
   font-variant-caps: all-small-caps;

@@ -15,3 +15,17 @@
 .clickable{
     cursor: pointer;
 }
+
+.custom-sharp-btn {
+    padding: 13px 30px  !important;
+    background-color: #1b1919  !important;
+    border-radius: 0  !important;
+    font-size: 20px  !important;
+    font-weight: bold  !important;
+    color: #fff  !important; 
+}
+.custom-sharp-btn:hover {
+    border: 1px solid #1b1919  !important;
+    background-color: transparent  !important;
+    color: #1b1919  !important; 
+}

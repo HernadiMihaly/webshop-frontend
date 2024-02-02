@@ -3,7 +3,7 @@
   background-color: rgba(255, 255, 255, 1);
   width: 320px;
   height: 100%;
-  max-height: calc(100vh - 300px); 
+  max-height: calc(100vh - 290px); 
   position: relative;
   border-radius: 3px;
   padding: 20px;
@@ -70,10 +70,6 @@
 
 .shopping-cart .shopping-cart-footer .btn {
   width: 100%;
-}
-
-.button:hover {
-  background: #77a0fc;
 }
 
 .shopping-cart .shopping-cart-header {
