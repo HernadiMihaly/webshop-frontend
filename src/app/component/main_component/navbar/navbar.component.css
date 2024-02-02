@@ -4,17 +4,15 @@
 
 .customLink > a{
   text-decoration : none;
-  color: #181616;
+  color: #1b1919;
   opacity: 0.95;
 }
 
 .customLink > a:hover{
-  background-color: #181616;
-  opacity: 0.95;
+  background-color: #1b1919;
   color: white;
   border-radius: 5px;
   height: auto;
-  
 }
 
 .navbar-top{
@@ -26,6 +24,8 @@
   font-variant-caps: all-small-caps;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 4;
 }
 
 .navbar-top-panel > a{
@@ -61,10 +61,19 @@
   display: inline-block;
 }
 
+app-shopping-cart-dropdown {
+  z-index: 5;
+  position: absolute;
+  left: calc(100% - 327px);
+  top: 20pt;
+}
+
 .navBarBottom{
   background-color: white;
   font-weight: bold;
   font-variant-caps: all-small-caps;
+  position: relative;
+  z-index: 3;
 }
 
 .custom-search {
@@ -74,14 +83,13 @@
 }
 
 .custom-search input {
-  border-color: #181616;
+  border-color: #1b1919;
   opacity: 0.95;
 }
 
 .custom-search div {
-  background-color: #181616;
+  background-color: #1b1919;
   border-radius: 5pt;
-  opacity: 0.95;
 }
 
 .custom-search i {

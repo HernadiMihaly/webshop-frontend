@@ -10,7 +10,7 @@
     }
     
     .panel-element-heading {
-        color: #181616;
+        color: #1b1919;
         font-size: 16px;
         font-weight: bold;
         padding-bottom: 3pt;
@@ -94,7 +94,7 @@
     }
     .prod-cat li ul li a:hover,.prod-cat li ul li a:focus, .prod-cat li ul li.active a , .prod-cat li a:hover,.prod-cat li a:focus, .prod-cat li a.active{
         background: none;
-        color: #181616;
+        color: #1b1919;
     }
     
     .pro-lab{
@@ -129,7 +129,7 @@
     }
     
     .product-list .price {
-        color:#181616 ;
+        color:#1b1919 ;
         font-size: 15px;
     }
     
@@ -158,7 +158,7 @@
         margin-bottom: 10px;
     }
     .product_meta a, .pro-price{
-        color:#181616 ;
+        color:#1b1919 ;
     }
     
     .pro-price, .amount-old {
@@ -192,9 +192,8 @@
     }
 
     #btn-filter {
-        background-color: #181616;
-        border-color: #181616 ;
-        opacity: 80%;
+        background-color: #1b1919;
+        border-color: #1b1919 ;
     }
 
     .filter-element{

@@ -4,14 +4,12 @@
 }
 
 .custom-dark-bg{
-    background-color: #181616;
-    opacity: 0.95;
+    background-color: #1b1919;
 }
 
 .custom-dark-text{
     text-decoration : none;
-    color: #181616 !important;
-    opacity: 0.95;
+    color: #1b1919 !important;
 }
 
 .clickable{

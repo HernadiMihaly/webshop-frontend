@@ -33,7 +33,7 @@
     font-weight: bold;
     z-index: 2;
     font-variant: small-caps;
-    font-size: 7.5vw;
+    font-size: 100px;
     text-shadow: 1.5px 1.5px 2px darkgray;
     letter-spacing: -0.03em;
     transition: 700ms ease;

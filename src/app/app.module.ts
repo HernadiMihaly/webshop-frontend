@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CartService } from './service/shoppingcart/cart.service';
 import { ShoppingcartComponent } from './component/shoppingcart_component/shoppingcart/shoppingcart.component';
+import { ShoppingCartDropdownComponent } from './component/main_component/shopping-cart-dropdown/shopping-cart-dropdown.component';
+import { RegisterComponent } from './component/register_component/register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ShoppingcartComponent } from './component/shoppingcart_component/shoppi
     PopularItemsListComponent,
     FooterComponent,
     ProductPageComponent,
-    ShoppingcartComponent
+    ShoppingcartComponent,
+    ShoppingCartDropdownComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

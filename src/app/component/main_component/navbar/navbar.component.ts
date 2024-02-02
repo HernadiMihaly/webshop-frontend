@@ -11,6 +11,7 @@ import { CartService } from '../../../service/shoppingcart/cart.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  isDropdownVisible = false;
 
   searchTerm: string = "";
 
@@ -63,6 +64,18 @@ export class NavbarComponent {
       return this.categories.filter(subcategory => subcategory.parentId === category.id);
     }
     return [];
+  }
+
+  showDropdown() {
+    if (this.itemCount > 0){
+      this.isDropdownVisible = true;
+    } else {
+      this.hideDropdown();
+    }
+  }
+
+  hideDropdown() {
+    this.isDropdownVisible = false;
   }
 
 }

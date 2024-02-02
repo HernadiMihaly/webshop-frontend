@@ -1,0 +1,33 @@
+<div class="shopping-cart custom-dark-text">
+  <div class="shopping-cart-header">
+    <div>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+      <div class="badge">{{ getCartQuantity() }}</div>
+    </div>
+    <div class="shopping-cart-total">
+      <span class="lighter-text">Összesen: </span>
+      <span class="main-color-text">{{ calculateTotal() }} Ft</span>
+    </div>
+  </div>
+
+  <div class="shopping-cart-items">
+    <li *ngFor="let item of getCartItems()" class="clearfix clickable">
+      <div class="row align-items-center" [routerLink]="['/products', item.id]">
+        <div class="col-md-4">
+          <img [src]="item.image" alt="{{ item.name }}" class="img-fluid" />
+        </div>
+        <div class="col-md-8">
+          <div class="item-details">
+            <div class="item-name">{{ item.name }}</div>
+            <div class="item-price">Ár: {{ this.formatPrice(item.price) }} Ft</div>
+            <div class="item-quantity"> Méret: {{item.size}}</div>
+            <div class="item-quantity"> {{ item.quantity }} db</div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </div>
+  <div class="shopping-cart-footer border-top mt-3 pt-3">
+    <a class="btn btn-dark btn-lg">Fizetés</a>
+  </div>
+</div>
