@@ -20,6 +20,9 @@ import { CartService } from './service/shoppingcart/cart.service';
 import { ShoppingcartComponent } from './component/shoppingcart_component/shoppingcart/shoppingcart.component';
 import { ShoppingCartDropdownComponent } from './component/main_component/shopping-cart-dropdown/shopping-cart-dropdown.component';
 import { RegisterComponent } from './component/register_component/register/register.component';
+import { LoginDropdownComponent } from './component/main_component/login-dropdown/login-dropdown.component';
+import { LoginComponent } from './component/login_component/login/login.component';
+import { ForgotPasswordComponent } from './component/forgot_password_component/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { RegisterComponent } from './component/register_component/register/regis
     ProductPageComponent,
     ShoppingcartComponent,
     ShoppingCartDropdownComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginDropdownComponent,
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
