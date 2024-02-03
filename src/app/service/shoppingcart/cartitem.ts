@@ -16,4 +16,6 @@ export interface CartItem {
 
   available: number;
 
+  productId: number;
+
 }
