@@ -61,7 +61,8 @@ export class ProductPageComponent {
         quantity: this.addToCartQuantity,
         image: this.product.productPhotos?.[0]?.imageUrl,
         color: this.product.color,
-        available: this.productService.getAvailableQuantityBySize(this.product, this.selectedSize) || 0
+        available: this.productService.getAvailableQuantityBySize(this.product, this.selectedSize) || 0,
+        productId: this.product.id
       };
 
       this.cartService.addItem(cartItem);

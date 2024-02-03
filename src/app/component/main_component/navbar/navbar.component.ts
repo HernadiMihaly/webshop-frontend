@@ -11,7 +11,9 @@ import { CartService } from '../../../service/shoppingcart/cart.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  isDropdownVisible = false;
+  isCartDropdownVisible = false;
+
+  isLoginDropdownVisible = false;
 
   searchTerm: string = "";
 
@@ -19,7 +21,7 @@ export class NavbarComponent {
 
   rootCategories: Category[] | undefined;
 
-  dropdownImages = {
+  cartDropdownImages = {
     'men': "https://images.pexels.com/photos/6227715/pexels-photo-6227715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     'women': "https://images.pexels.com/photos/6014873/pexels-photo-6014873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     'children': "https://images.pexels.com/photos/6266237/pexels-photo-6266237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -66,16 +68,24 @@ export class NavbarComponent {
     return [];
   }
 
-  showDropdown() {
+  showCartDropdown() {
     if (this.itemCount > 0){
-      this.isDropdownVisible = true;
+      this.isCartDropdownVisible = true;
     } else {
-      this.hideDropdown();
+      this.hideCartDropdown();
     }
   }
 
-  hideDropdown() {
-    this.isDropdownVisible = false;
+  showLoginDropdown() {
+    this.isLoginDropdownVisible = true;
+  }
+
+  hideCartDropdown() {
+    this.isCartDropdownVisible = false;
+  }
+
+  hideLoginDropdown() {
+    this.isLoginDropdownVisible = false;
   }
 
 }

@@ -276,7 +276,8 @@ export class ProductListComponent implements AfterViewInit {
         quantity: 1,
         image: product.productPhotos?.[0]?.imageUrl,
         color: product.color,
-        available: this.productService.getAvailableQuantityBySize(product, this.selectedSize) || 0
+        available: this.productService.getAvailableQuantityBySize(product, this.selectedSize) || 0,
+        productId: product.id
       };
 
       this.cartService.addItem(cartItem);

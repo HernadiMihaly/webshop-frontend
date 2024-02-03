@@ -58,7 +58,7 @@
   display: inline-block;
 }
 
-app-shopping-cart-dropdown {
+.dropdown {
   z-index: 5;
   position: absolute;
   left: calc(100% - 327px);

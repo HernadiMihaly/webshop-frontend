@@ -12,7 +12,7 @@
 
   <div class="shopping-cart-items">
     <li *ngFor="let item of getCartItems()" class="clearfix clickable">
-      <div class="row align-items-center" [routerLink]="['/products', item.id]">
+      <div class="row align-items-center" [routerLink]="['/product', item.productId]">
         <div class="col-md-4">
           <img [src]="item.image" alt="{{ item.name }}" class="img-fluid" />
         </div>
@@ -28,6 +28,6 @@
     </li>
   </div>
   <div class="shopping-cart-footer border-top mt-3 pt-3">
-    <input name="checkout" id="checkout" class="btn custom-sharp-btn" type="submit" value="Fizetés">
+    <input routerLink="/cart" name="checkout" id="checkout" class="btn custom-sharp-btn" type="submit" value="Fizetés">
   </div>
 </div>
