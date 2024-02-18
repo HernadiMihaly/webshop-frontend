@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { SubscribedUser } from './subscribeduser';
 import { Observable } from 'rxjs';
 import { User } from './user';
+import { LoginUser } from './loginuser';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class UserService {
 
   public addRegistration(user: User): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/register`, user);
+  }
+
+  public login(user: User): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/login`, user);
   }
 
 }

@@ -18,23 +18,23 @@
     </div>
     <div class="col-sm-6 col-md-5 form-section">
       <div class="login-wrapper">
-          <h2 class="login-title">Bejelentkezés</h2>
-          <form action="#!">
-              <div class="form-group">
-                  <label for="email" class="sr-only">Email</label>
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
-              </div>
-              <div class="form-group mb-3">
-                  <label for="password" class="sr-only">Jelszó</label>
-                  <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mb-5">
-                  <input name="signup" id="signup" class="btn custom-sharp-btn" type="submit" value="Bejelentkezés">
-                  <a routerLink="/forgot-password" class="forgot-password-link">Elfelejtett jelszó?</a>
-              </div>
-          </form>           
-          <p class="login-wrapper-footer-text">Még nincs fiókja? <a routerLink="/register" class="text-reset">Regisztráció</a></p>
+        <h2 class="login-title">Bejelentkezés</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="email" class="sr-only">Email</label>
+            <input formControlName="email" type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="password" class="sr-only">Jelszó</label>
+            <input formControlName="password" type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-5">
+            <button type="submit" class="btn custom-sharp-btn" [disabled]="loginForm.invalid">Bejelentkezés</button>
+            <a routerLink="/forgot-password" class="forgot-password-link">Elfelejtett jelszó?</a>
+          </div>
+        </form>           
+        <p class="login-wrapper-footer-text">Még nincs fiókja? <a routerLink="/register" class="text-reset">Regisztráció</a></p>
       </div>
-  </div>      
+    </div>          
   </div>
 </div>
